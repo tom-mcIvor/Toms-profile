@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Link from 'next/link';
 
 
 function Todo() {
@@ -28,27 +29,35 @@ function Todo() {
 
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='to-do-div'>
+      <h1>Todo</h1>
+      <div>
+        <form onSubmit={handleSubmit}>
         
         
-         
-          <TextField type="text" name="todo" id="outlined-basic" label="Todo" variant="outlined" />
+        
+            <TextField type="text" name="todo" id="outlined-basic" label="Todo" variant="outlined" />
         
         
-        <Button type="submit" variant="contained" color="primary">Add</Button>
-      </form>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <Button type="button" variant="contained" color="primary" onClick={() => handleDelete(index)}>
-              Delete
-            </Button>
-          </li>
-        ))}
-      </ul>
+          <Button type="submit" variant="contained" color="primary">Add</Button>
+        </form>
+        <ul>
+          {todos.map((todo, index) => (
+            <li key={index}>
+              {todo}
+              <Button type="button" variant="contained" color="primary" onClick={() => handleDelete(index)}>
+                Delete
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+<Link href="/">Home</Link>
+
     </div>
+
+
   )
 }
 
