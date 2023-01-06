@@ -2,7 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
-import Todo from './Todo'
+import Todo from './components/Todo'
+import Authentication from './components/Auth'
+import Welcome from './components/Home'
+import DarkModeToggle from './components/DarkMode'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +20,13 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-        <Todo />
+          <header className='Nav' style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Welcome />
+            <Authentication />
+          </header>
+
+          <DarkModeToggle />
+          <Todo />
         </div>
       </main>
     </>

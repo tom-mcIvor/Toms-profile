@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 
 function Todo() {
   // Initialize an empty list of todos
@@ -22,22 +25,26 @@ function Todo() {
     setTodos(todos.filter((todo, i) => i !== index))
   }
 
+
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Todo:
-          <input type="text" name="todo" />
-        </label>
-        <button type="submit">Add</button>
+        
+        
+         
+          <TextField type="text" name="todo" id="outlined-basic" label="Todo" variant="outlined" />
+        
+        
+        <Button type="submit" variant="contained" color="primary">Add</Button>
       </form>
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
             {todo}
-            <button type="button" onClick={() => handleDelete(index)}>
+            <Button type="button" variant="contained" color="primary" onClick={() => handleDelete(index)}>
               Delete
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
