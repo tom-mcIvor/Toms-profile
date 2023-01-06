@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
 
+const apikey = process.env.NEXT_PUBLIC_SECRET_KEY
+
+              //              API_KEY 
+              //  process.env.NEXT_PUBLIC_SOMETHING
+
+
+
+
 function Weather(props) {
   const [weatherData, setWeatherData] = useState([{}]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(process.env.API_KEY);
 
   useEffect(() => {
-    fetch(`https://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=Napier&aqi=no`)
+    fetch(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=Napier&aqi=no`)
       .then(res => res.json(console.log(res))
       )
       .then(
