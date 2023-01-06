@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from 'next/link';
+import DarkModeToggle from './components/DarkMode';
 
 
 function Todo() {
@@ -53,8 +54,8 @@ function Todo() {
         </ul>
       </div>
 
-<Link href="/">Home</Link>
-
+<Link href="/"><h1>Home</h1></Link>
+<DarkModeToggle/>
     </div>
 
 

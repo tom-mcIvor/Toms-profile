@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -73,7 +73,7 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -110,39 +110,12 @@ body {
 
 
 
-input[type="text"] {
-  flex: 1;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button[type="submit"] {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 
 
-li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
 
-li + li {
-  border-top: 1px solid #ccc;
-}
 
-li span {
-  flex: 1;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
+
 
 body main div{
   display: flex;
@@ -182,7 +155,7 @@ main{
 
 .dark-mode {
   /* Add dark mode styles here */
-  background-color: #000;
+  background-color: #424242;
   color: #fff;
 }
 
@@ -195,21 +168,13 @@ main{
   width: 100%;
 }
 
-#__next > form{
-  color: red !important;
-}
-
-
-#__next > main > div > header > form > div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root > div::placeholder {
-  color: red;
-}
 
 
 
-#__next > main > div > div.dark-mode-toggle > button{
-  width: 50px;
-  height: 50px;
-}
+
+
+
+
 
 #__next > div{
 
@@ -218,9 +183,15 @@ display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: -200px;
 }
 
 #__next > div > div{
   margin: 200px;
 }
+
+a {
+  text-decoration: none;
+  color: #1976d2;
+
+}
+
