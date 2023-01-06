@@ -1,6 +1,6 @@
 
 
-see app at: [toms-profile-oxse0zaau-tom-mcivor.vercel.app](https://vercel.com/tom-mcivor/toms-profile/Aw5XxPaxsAgXBPGqtbYtZ8B2dDNd)
+see app at: https://toms-profile-oxse0zaau-tom-mcivor.vercel.app/
 
 
 
