@@ -22,8 +22,12 @@ export default function Home() {
             <Authentication />
           </header>
 
+    
+          <div className='links'>
+            <Link href="/Todo"><h1>Todo</h1></Link>
+            <Link href="/Weather"><h1>Weather</h1></Link>
+          </div>
 
-          <Link href="/Todo"><h1>Todo</h1></Link>
 
           <DarkModeToggle />
           

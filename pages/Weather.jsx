@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+
 
 const apikey = process.env.NEXT_PUBLIC_SECRET_KEY
 
@@ -37,9 +39,13 @@ function Weather(props) {
   } else {
     return (
       <div>
-        <h1>Weather in Napier:</h1>
-        <p>Temperature: {weatherData.current.temp_c}</p>
-        <p>Humidity: {weatherData.current.wind_kph}</p>
+        <Link href="/"><h1>Home</h1></Link>
+
+        <div id='weather-container'>
+          <h1>Weather in Napier:</h1>
+          <p>Temperature (°C): {weatherData.current.temp_c}</p>
+          <p>Wind (kph): {weatherData.current.wind_kph}</p>
+        </div>
       </div>
     );
   }
