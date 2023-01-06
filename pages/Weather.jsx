@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
-import API_KEY from '../.env'
-
-
 
 function Weather(props) {
   const [weatherData, setWeatherData] = useState([{}]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-
+  console.log(process.env.API_KEY);
 
   useEffect(() => {
     fetch(`https://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=Napier&aqi=no`)
