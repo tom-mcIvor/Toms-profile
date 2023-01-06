@@ -181,12 +181,12 @@ main{
 }
 
 .dark-mode {
-
-  
   /* Add dark mode styles here */
   background-color: #000;
   color: #fff;
 }
+
+
 
 .Nav{
 
@@ -195,3 +195,18 @@ main{
   width: 100%;
 }
 
+#__next > form{
+  color: red !important;
+}
+
+
+#__next > main > div > header > form > div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root > div::placeholder {
+  color: red;
+}
+
+
+
+#__next > main > div > div.dark-mode-toggle > button{
+  width: 50px;
+  height: 50px;
+}

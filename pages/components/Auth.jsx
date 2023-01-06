@@ -4,6 +4,24 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 
+const styles = {
+  'input-label': {
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    width: '100%',
+    color: 'red'
+  },
+
+  'input': {
+    '&::placeholder': {
+      textOverflow: 'ellipsis !important',
+      color: 'blue'
+    }
+  }
+};
+
+
 const Authentication = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

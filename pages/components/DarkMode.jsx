@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import IconButton from '@mui/material/IconButton';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 
 const DarkModeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -9,14 +11,15 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <label className="dark-mode-toggle">
-      <input
-        type="checkbox"
-        checked={isDarkMode}
-        onChange={toggleDarkMode}
-      />{' '}
-      Dark mode
-    </label>
+    <div className="dark-mode-toggle">
+      <IconButton
+        type="button"
+        onClick={toggleDarkMode}
+        color="inherit"
+      >
+        <Brightness4Icon/>
+      </IconButton>
+    </div>
   );
 };
 
