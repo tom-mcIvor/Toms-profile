@@ -1,0 +1,29 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Archive npm failure logs
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: npm-logs
+          path: ~/.npm/_logs
+      - name: Setup nNode.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm i
+      - name: Run unit tests
+        run: npm run test
+      - name: Run linting
+        run: npm run lint
