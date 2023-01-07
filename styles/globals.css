@@ -76,7 +76,6 @@
 } */
 
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -84,36 +83,10 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
   font-family: 'Nutro', sans-serif;
   width: 100%;
   height: 100%;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-
-
-
-
-
-
 
 
 
@@ -121,36 +94,35 @@ body main div{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 }
 
 main{
   display: flex;
-  flex-grow: inherit;
-
   width: 100%;
   height: 100%;
 }
 
 #__next{
   display: flex;
-  flex-grow: inherit;
 
   width: 100%;
-  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  margin-top: 5vh;
 }
 
-
-
-#__next > main > div{
-  flex-grow: inherit;
+#__next > div{
   display: flex;
+
   width: 100%;
   height: 100%;
+
 }
+
 
 .password-container {
   display: block;
-  
 }
 
 .dark-mode {
@@ -159,22 +131,11 @@ main{
   color: #fff;
 }
 
-
-
 .Nav{
-
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-
-
-
-
-
-
-
-
 
 #__next > div{
 
@@ -185,8 +146,8 @@ display: flex;
   flex-direction: column;
 }
 
-#__next > div > div{
-  margin: 200px;
+#__next > div > div {
+  margin: calc(10% + 10%) 0;
 }
 
 a {
@@ -205,4 +166,3 @@ a {
   display: flex;
   flex-direction: column;
 }
-
