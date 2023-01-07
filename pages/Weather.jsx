@@ -1,14 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-
-
-const apikey = process.env.NEXT_PUBLIC_SECRET_KEY
-
-              //              API_KEY 
-              //  process.env.NEXT_PUBLIC_SOMETHING
-
-
+import { getWeatherData } from './api/weatherAPI'
 
 
 function Weather(props) {
@@ -18,9 +11,7 @@ function Weather(props) {
 
 
   useEffect(() => {
-    fetch(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=Napier&aqi=no`)
-      .then(res => res.json(console.log(res))
-      )
+    getWeatherData(props.city)
       .then(
         (result) => {
           setIsLoaded(true);
