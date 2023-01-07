@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Layout from '../components/Layout';
 
 
 const apikey = process.env.NEXT_PUBLIC_SECRET_KEY
@@ -38,15 +39,15 @@ function Weather(props) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
-        <Link href="/"><h1>Home</h1></Link>
-
-        <div id='weather-container'>
-          <h1>Weather in Napier:</h1>
-          <p>Temperature (°C): {weatherData.current.temp_c}</p>
-          <p>Wind (kph): {weatherData.current.wind_kph}</p>
+      <Layout>
+        <div>
+          <div id='weather-container'>
+            <h1>Weather in Napier:</h1>
+            <p>Temperature (°C): {weatherData.current.temp_c}</p>
+            <p>Wind (kph): {weatherData.current.wind_kph}</p>
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
