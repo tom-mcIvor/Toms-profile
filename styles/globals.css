@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 html {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -13,7 +12,6 @@ html {
   align-items: center;
   height: 100%;
 }
-
 
 #__next > main {
   display: grid;
@@ -55,7 +53,7 @@ margin: 0;
 }
 
 main a:hover {
-  background-color: rgba(221, 221, 221, 0.64);
+  background-color: #f57b00b0;
 }
 
 #container{
