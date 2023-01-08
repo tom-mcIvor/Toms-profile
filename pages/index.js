@@ -20,30 +20,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div id="Auth">
         <Authentication />
       </div>
-
-      <main className='sideNav'>
-          
-        
+      <main className='sideNav'>      
             <header className='Nav' style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Welcome />
-              
+              <Welcome />       
             </header>
             <div className='links'>
+              <Link href="/"><h1>Home</h1></Link> 
               <Link href="/Todo"><h1>Todo</h1></Link>
               <Link href="/Weather"><h1>Weather</h1></Link>
               <Link href="/components/Calculator"><h1>Calculator</h1></Link>
             </div>
-
-
             <DarkModeToggle/>
-          
-        
-         
       </main>
     </>
   )
 }
+
