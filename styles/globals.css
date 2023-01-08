@@ -27,7 +27,7 @@ html {
   overflow-x: hidden;
   text-align: center; 
   justify-content: space-between;
-  padding-top: 15%;
+  padding-top: 10vh;
 }
 
 #__next > main > div.links a{
