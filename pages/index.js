@@ -20,12 +20,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+
+      <div id="Auth">
+        <Authentication />
+      </div>
+
+      <main className='sideNav'>
           
-        <div className={styles.description}>
+        
             <header className='Nav' style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Welcome />
-              <Authentication />
+              
             </header>
             <div className='links'>
               <Link href="/Todo"><h1>Todo</h1></Link>
@@ -36,7 +41,7 @@ export default function Home() {
 
             <DarkModeToggle/>
           
-        </div>
+        
          
       </main>
     </>

@@ -76,176 +76,64 @@
 } */
 
 * {
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  font-family: 'Nutro', sans-serif;
-  width: 100%;
-  height: 100%;
-}
-
-
-
-body main div{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-main{
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-#__next{
-  display: flex;
-
-  width: 100%;
-  max-height: 100%;
-  margin-top: 5vh;
-}
-
-#__next > div{
-  display: flex;
-
-  width: 100%;
-  height: 100%;
-
-}
-
-
-.password-container {
-  display: block;
-}
-
-.dark-mode {
-  /* Add dark mode styles here */
-  background-color: #424242;
-  color: #fff;
-}
-
-.Nav{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-#__next > div{
-
-display: flex;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#__next > div > div {
-  margin: calc(10% + 10%) 0;
-}
-
-a {
-  text-decoration: none;
-  color: #a970ff;
-
-  text-shadow: 0px 3px 1px -2px rgb(0, 0, 0 , 20%),
-   0px 2px 2px 0px rgb(0, 0, 0 , 14%), 
-   0px 1px 5px 0px rgb(0, 0, 0 , 12%);
-}
-
-
-#weather-container{
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-/* * {
   box-sizing: border-box;
 }
 
+
 body {
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-Style the header
-.header {
-  background-color: #f1f1f1;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
+#__next > main {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(17, 17, 17, 0.434);
+  overflow-x: hidden;
 }
 
-/* Container for flexboxes */
-/* .row {
-  display: -webkit-flex;
-  display: flex;
-} */
-
-/* Create three unequal columns that sits next to each other */
-/* .column {
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration 
-}*/
-
-/* Left and right column 
-.column.side {
-   -webkit-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-} */
-
-/* Middle column */
-/* .column.middle {
-  -webkit-flex: 2;
-  -ms-flex: 2;
-  flex: 2;
+#__next > main a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
 }
 
-/* Style the footer */
-/* .footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
+.sidenav a:hover {
+  background-color: #ddd;
+  color: rgba(0, 0, 0, 0.533);
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-/* @media (max-width: 600px) {
-  .row {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
 }
-</style>
-</head>
-<body> */ 
-/* 
-<h2>CSS Template using Flexbox</h2>
-<p>In this example, we have created a header, three unequal columns and a footer. On smaller screens, the columns will stack on top of each other. Resize the browser window to see the responsive effect.</p>
-<p><strong>Note:</strong> Flexbox is not supported in Internet Explorer 10 and earlier versions.</p>
 
-<div class="header">
-  <h2>Header</h2>
-</div>
 
-<div class="row">
-  <div class="column side" style="background-color:#aaa;">Column</div>
-  <div class="column middle" style="background-color:#bbb;">Column</div>
-  <div class="column side" style="background-color:#ccc;">Column</div>
-</div>
 
-<div class="footer">
-  <p>Footer</p>
-</div>
 
-</body>
-</html> */ 
+#Auth {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
