@@ -33,9 +33,10 @@ function Weather(props) {
       <Layout>
         <div>
           <div id='weather-container'>
-            <h1>Weather in Napier:</h1>
+            <h1>Weather in {weatherData.location.name}</h1>
             <p>Temperature (°C): {weatherData.current.temp_c}</p>
             <p>Wind (kph): {weatherData.current.wind_kph}</p>
+            <p>Condition: {weatherData.current.condition.text}</p>
           </div>
         </div>
       </Layout>

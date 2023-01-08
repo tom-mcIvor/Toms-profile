@@ -12,7 +12,7 @@ const Calculator = () => {
   const handleCalculate = () => {
     switch (operation) {
       case '+':
-        setResult(num1 + num2);
+        setResult(parseInt(num1) + parseInt(num2));
         break;
       case '-':
         setResult(num1 - num2);
@@ -33,7 +33,7 @@ const Calculator = () => {
     <Layout>
      
       <div>
-      <h3>Calc written in C sharp and compiled to js</h3>
+      <h3>Basic react calc</h3>
         <input
           type="number"
           value={num1}
