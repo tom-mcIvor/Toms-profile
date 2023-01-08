@@ -22,10 +22,18 @@ html {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #DFF0D8;
+  background-color: #dff0d8;
   overflow-x: hidden;
   text-align: center; 
+
+  
 }
+
+
+#__next > main.dark-mode{
+  background-color: #424242 !important;
+}
+
 
 #__next > main a {
   
@@ -36,8 +44,8 @@ html {
   color: #1976d2;
 }
 
-.sidenav a:hover {
-  background-color: #ddd;
+main a:hover {
+  background-color: rgba(221, 221, 221, 0.64);
 }
 
 #container{
@@ -56,21 +64,11 @@ html {
 
 }
 
-#__next > main > div.dark-mode-toggle{
-  display: flex;
-  justify-content: center;
-
-}
-
-
-
-
 .dark-mode {
   /* Add dark mode styles here */
   background-color: #424242;
-  color: #fff;
+  color: rgb(126, 126, 126);
 }
-
 
 
 
