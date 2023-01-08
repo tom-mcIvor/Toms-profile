@@ -67,11 +67,17 @@ main a:hover {
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
-  height: 300px;
-  overflow: auto;
-
+  width: 250px;
+  height: 100px;
+  margin-top: 10px;
 }
+
+#Auth > form{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
 .dark-mode {
   /* Add dark mode styles here */
   background-color: #424242;
