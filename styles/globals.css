@@ -29,10 +29,11 @@ html {
 
 #__next > main a {
   
-  color: white;
   padding: 16px;
   text-decoration: none;
   display: block;
+  text-decoration: none;
+  color: #a970ff;
 }
 
 .sidenav a:hover {
@@ -65,7 +66,11 @@ html {
 
 
 
-
+.dark-mode {
+  /* Add dark mode styles here */
+  background-color: #424242;
+  color: #fff;
+}
 
 
 
