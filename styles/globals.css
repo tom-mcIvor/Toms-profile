@@ -22,7 +22,7 @@ html {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgba(17, 17, 17, 0.434);
+  background-color: #DFF0D8;
   overflow-x: hidden;
   text-align: center; 
 }
@@ -38,7 +38,6 @@ html {
 
 .sidenav a:hover {
   background-color: #ddd;
-  color: rgba(0, 0, 0, 0.533);
 }
 
 #container{
