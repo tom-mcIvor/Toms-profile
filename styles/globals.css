@@ -94,3 +94,9 @@ align-items: center;
   background-color: rgba(255, 255, 255, 0.247);
 }
 
+#about {
+  margin-left: 200px;
+  padding: 10%;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
