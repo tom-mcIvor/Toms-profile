@@ -67,10 +67,19 @@ main a:hover {
 .dark-mode {
   /* Add dark mode styles here */
   background-color: #424242;
-  color: rgb(126, 126, 126);
+  color: rgb(208, 208, 208);
 }
 
+#__next > main > header > header > h1{
+  color: black;
+}
 
+#Auth > form > div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
 
+  background-color: rgba(255, 255, 255, 0.247);
+}
 
+#Auth > form > div.password-container > div{
+  background-color: rgba(255, 255, 255, 0.247);
 
+}

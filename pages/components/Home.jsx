@@ -4,10 +4,11 @@ const Welcome = () => {
   return (
     
       <header>
-        <h1>Tom&apos;s profile</h1>
+        <h1>Toms Profile</h1>
       </header>
   
   );
 };
 
 export default Welcome;
+
