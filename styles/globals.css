@@ -16,6 +16,7 @@ html {
 
 
 #__next > main {
+  display: grid;
   height: 100%;
   width: 200px;
   position: fixed;
@@ -25,10 +26,20 @@ html {
   background-color: #dff0d8;
   overflow-x: hidden;
   text-align: center; 
-
-  
+  justify-content: space-between;
+  padding-top: 15%;
 }
 
+#__next > main > div.links a{
+display: inline-block;
+margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#__next > main > div.dark-mode-toggle{
+  text-align: center;  
+  }
 
 #__next > main.dark-mode{
   background-color: #424242 !important;
@@ -36,7 +47,6 @@ html {
 
 
 #__next > main a {
-  
   padding: 16px;
   text-decoration: none;
   display: block;
@@ -53,7 +63,6 @@ main a:hover {
   padding-left: 20px;
 }
 
-
 #Auth {
   position: fixed;
   top: 0;
@@ -63,7 +72,6 @@ main a:hover {
   overflow: auto;
 
 }
-
 .dark-mode {
   /* Add dark mode styles here */
   background-color: #424242;
@@ -75,11 +83,10 @@ main a:hover {
 }
 
 #Auth > form > div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
-
   background-color: rgba(255, 255, 255, 0.247);
 }
 
 #Auth > form > div.password-container > div{
   background-color: rgba(255, 255, 255, 0.247);
-
 }
+
