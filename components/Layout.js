@@ -8,9 +8,7 @@ import Authentication from '../pages/components/Auth';
 const Layout = ({ children }) => {
   return (
     <>
-    <div id="Auth">
-        <Authentication />
-      </div>
+   
 
       <main className='sideNav'>
           
