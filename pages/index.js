@@ -32,6 +32,8 @@ export default function Home() {
               <Link href="/Todo"><h1>Todo</h1></Link>
               <Link href="/Weather"><h1>Weather</h1></Link>
               <Link href="/components/Calculator"><h1>Calculator</h1></Link>
+              <Link href="/components/Tennis"><h1>Tennis</h1></Link>
+
             </div>
             <DarkModeToggle/>
       </main>
