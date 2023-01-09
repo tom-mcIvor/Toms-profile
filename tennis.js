@@ -2,7 +2,6 @@ const fetch = require('node-fetch')
 const request = require('superagent')
 const express = require('express')
 const router = express.Router()
-
 const apiKey = process.env.NEXT_PUBLIC_TENNIS_KEY
 
 router.get('/:playername', (req, res) => {
