@@ -1,34 +1,26 @@
-const express = require('express')
-const next = require('next')
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+const express = require('express');
+const next = require('next');
+const tennisRoutes = require('./tennis');
+const path = require('path');
 
-app
-  .prepare()
-  .then(() => {
-    const server = express()
 
-    // Add your server-side routes here
-    // For example:
-    // server.get('/api/todos', (req, res) => {
-    //   res.json([
-    //     { id: 1, text: 'Buy milk' },
-    //     { id: 2, text: 'Write code' },
-    //   ])
-    // })
 
-    server.get('*', (req, res) => {
-      return handle(req, res)
-    })
+const port = process.env.PORT || 3000;
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handler = routes.getRequestHandler(app);
+const server = express();
 
-    server.listen(3000, err => {
-      if (err) throw err
-      console.log('> Ready on http://localhost:3000')
-    })
-  })
-  .catch(ex => {
-    console.error(ex.stack)
-    process.exit(1)
-  })
+app.prepare().then(() => {
+  server.use(handler);
+  server.use(express.json());
+  server.use(express.static(path.join(__dirname, 'public')));
+  server.use('/api/v1/tennis', tennisRoutes);
+  module.exports = server;
+});
+
+server.listen(port, function () {
+  // eslint-disable-next-line no-console
+  console.log('Listening on port', port)
+})

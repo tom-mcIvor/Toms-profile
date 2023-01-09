@@ -6,6 +6,8 @@ import TextField from '@mui/material/TextField';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlayer } from '../action/tennis';
 import { fetchTennisPlayer } from '../api/tennisApi';
+import Layout from '../../components/Layout';
+
 
 function Tennis(props) {
   const tennis = useSelector((state) => state.tennis)
@@ -33,6 +35,8 @@ function Tennis(props) {
 
   return (
     <>
+      <Layout>
+
       <div>
         <Box
           onSubmit={handleSubmit}
@@ -57,6 +61,7 @@ function Tennis(props) {
       <div>
         {Object.keys(tennis).length != 0 && tennis.results[0].entity.id}
       </div>
+      </Layout>
     </>
   )
 }
