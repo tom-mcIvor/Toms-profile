@@ -13,9 +13,7 @@ export const store = createStore(
 
 
 export default function App({ Component, pageProps }) {
-  <Provider store={store}>
   return <Component {...pageProps} />
-  </Provider>
 }
 
 
