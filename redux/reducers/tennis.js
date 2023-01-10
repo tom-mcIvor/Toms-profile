@@ -1,4 +1,4 @@
-import { RECEIVE_PLAYER } from '../../../action/tennis'
+import { RECEIVE_PLAYER } from "../../action/tennis"
 
 function tennisplayerfun(state = {}, action) {
   const { type, payload } = action
