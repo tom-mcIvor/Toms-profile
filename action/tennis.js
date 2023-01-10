@@ -1,4 +1,4 @@
-import { fetchttennispplayer } from "../api/tennisApi"
+import { fetchttennispplayer } from "../pages/api/tennisApi"
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 // export const RECEIVE_POSTS = 'RECEIVE_POSTS'

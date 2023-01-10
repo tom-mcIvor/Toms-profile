@@ -4,7 +4,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPlayer } from '../action/tennis';
+import { fetchPlayer } from '../../action/tennis';
 import { fetchTennisPlayer } from '../api/tennisApi';
 import Layout from '../../components/Layout';
 
