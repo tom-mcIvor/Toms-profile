@@ -3,13 +3,10 @@ import Router from 'next/router';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-
-
 const Authentication = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,9 +35,7 @@ const Authentication = () => {
   return (
     <form onSubmit={handleSubmit}>
       {error && <p className="error">{error}</p>}
-      
       <TextField
-      
       label="username"
       variant="outlined"
         type="text"

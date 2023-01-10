@@ -1,34 +1,48 @@
 const express = require('express')
 const next = require('next')
-
+const server = express();
+const { parse } = require('url')
+const { createServer } = require('http')
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const hostname = 'localhost'
+const port = 3000
+// when using middleware `hostname` and `port` must be provided below
+const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
+const tennisRoutes  = require('./tennis')
+const path = require('path')
 
-app
-  .prepare()
-  .then(() => {
-    const server = express()
 
-    // Add your server-side routes here
-    // For example:
-    // server.get('/api/todos', (req, res) => {
-    //   res.json([
-    //     { id: 1, text: 'Buy milk' },
-    //     { id: 2, text: 'Write code' },
-    //   ])
-    // })
-
-    server.get('*', (req, res) => {
-      return handle(req, res)
-    })
-
-    server.listen(3000, err => {
-      if (err) throw err
-      console.log('> Ready on http://localhost:3000')
-    })
+app.prepare().then(() => {
+  createServer(async (req, res) => {
+    try {
+      // Be sure to pass `true` as the second argument to `url.parse`.
+      // This tells it to parse the query portion of the URL.
+      const parsedUrl = parse(req.url, true)
+      const { pathname, query } = parsedUrl
+      
+      server.use('/api/v1/tennis', tennisRoutes)
+      server.use(express.json())
+      server.use(express.static(path.join(__dirname)))
+      
+      if (pathname === '/a') {
+        await app.render(req, res, '/a', query)
+      } else if (pathname === '/b') {
+        await app.render(req, res, '/b', query)
+      } else {
+        await handle(req, res, parsedUrl)
+      }
+    } catch (err) {
+      console.error('Error occurred handling', req.url, err)
+      res.statusCode = 500
+      res.end('internal server error')
+    }
+  }).listen(port, (err) => {
+    if (err) throw err
+    console.log(`> Ready on http://${hostname}:${port}`)
   })
-  .catch(ex => {
-    console.error(ex.stack)
-    process.exit(1)
-  })
+})
+
+
+
+module.exports = server
