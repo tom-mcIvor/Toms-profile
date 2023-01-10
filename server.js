@@ -9,6 +9,9 @@ const port = 3000
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
+const tennisRoutes  = require('./tennis')
+const path = require('path')
+
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
@@ -17,7 +20,11 @@ app.prepare().then(() => {
       // This tells it to parse the query portion of the URL.
       const parsedUrl = parse(req.url, true)
       const { pathname, query } = parsedUrl
-
+      
+      server.use('/api/v1/tennis', tennisRoutes)
+      server.use(express.json())
+      server.use(express.static(path.join(__dirname)))
+      
       if (pathname === '/a') {
         await app.render(req, res, '/a', query)
       } else if (pathname === '/b') {
@@ -35,5 +42,7 @@ app.prepare().then(() => {
     console.log(`> Ready on http://${hostname}:${port}`)
   })
 })
+
+
 
 module.exports = server
