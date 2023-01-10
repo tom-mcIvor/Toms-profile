@@ -9,6 +9,7 @@ function Weather(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  
 
   useEffect(() => {
     getWeatherData(props.city)
@@ -23,6 +24,7 @@ function Weather(props) {
         }
       )
   }, [props.city]);
+
 
   if (error) {
     return <div>Error: {error.message}</div>;

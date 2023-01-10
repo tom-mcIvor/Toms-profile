@@ -12,6 +12,9 @@ const handle = app.getRequestHandler()
 const tennisRoutes  = require('./tennis')
 const path = require('path')
 
+server.use('/api/v1/tennis', tennisRoutes)
+server.use(express.json())
+server.use(express.static(path.join(__dirname)))
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
@@ -21,9 +24,6 @@ app.prepare().then(() => {
       const parsedUrl = parse(req.url, true)
       const { pathname, query } = parsedUrl
       
-      server.use('/api/v1/tennis', tennisRoutes)
-      server.use(express.json())
-      server.use(express.static(path.join(__dirname)))
       
       if (pathname === '/a') {
         await app.render(req, res, '/a', query)

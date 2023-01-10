@@ -2,7 +2,6 @@ const fetch = require('node-fetch')
 const request = require('superagent')
 const express = require('express')
 const router = express.Router()
-const apiKey = process.env.NEXT_PUBLIC_TENNIS_KEY
 
 router.get('/:playername', (req, res) => {
   const playername = req.params.playername
@@ -11,7 +10,7 @@ router.get('/:playername', (req, res) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'X-RapidAPI-Key': NEXT_PUBLIC_TENNIS_KEY,
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TENNIS_KEY,
       'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com',
     },
   }
@@ -35,7 +34,7 @@ router.get('/id/:playerId', (req, res) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'X-RapidAPI-Key': apiKey,
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TENNIS_KEY,
       'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com',
     },
   }
@@ -60,7 +59,7 @@ router.get('/rankings/:tour', (req, res) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'X-RapidAPI-Key': apiKey,
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TENNIS_KEY,
       'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com',
     },
   }
@@ -86,7 +85,7 @@ router.get('/image/:id', (req, res) => {
       `https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerid}/image`
     )
     .set({
-      'X-RapidAPI-Key': apiKey,
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TENNIS_KEY,
       'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com',
     })
     .then((response) => {
