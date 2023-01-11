@@ -10,7 +10,11 @@ const Tennis = () => {
   const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
+  
 
+
+
+  
   const options = {
     method: 'GET',
     headers: {
@@ -19,6 +23,14 @@ const Tennis = () => {
     }
   };
 
+  // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+  // .then(response => response.json())
+  // .then(response => console.log(response))
+  // .catch(err => console.error(err));
+
+
+
+  
   useEffect(() => {
     fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
       .then(response => response.blob())
@@ -56,7 +68,7 @@ const Tennis = () => {
       noValidate
       autoComplete="off"
       >
-        <div>
+        <div id='tennis-form'>
           <TextField 
             label="Search Player"
             variant="outlined" 
@@ -68,9 +80,9 @@ const Tennis = () => {
             color="primary"
             type="submit"
             >Submit</Button>
-            {loading ? <p>error...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)}  />}
         </div>
       </Box>
+            {loading ? <p>error...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)}  />}
     </Layout>
   )
 }
