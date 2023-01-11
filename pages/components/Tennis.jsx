@@ -1,69 +1,33 @@
-import { useState } from 'react'
-import Button from '@mui/material/Button';
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchPlayer } from '../../action/tennis';
-import { fetchTennisPlayer } from '../api/tennisApi';
+import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 
 
-function Tennis(props) {
-  const tennis = useSelector((state) => state.tennis)
-  const dispatch = useDispatch()
-  const [formData, setFormData] = useState({
-    name: '',
-  })
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value,
-    })
-  }
-  const handleSubmit = async (evt) => {
-    evt.preventDefault()
-    let player = await fetchTennisPlayer(formData.name)
-    dispatch(fetchPlayer(formData.name))
-    props.loadedPlayer(player)
-    setFormData({
-      name: '',
-    })
-    console.log(player)
-  }
+const Tennis = () => {
+  const [data, setData] = useState(null);
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '6089442d10msh761447d6ab1388cp1bf39ejsn9308ea310980',
+      'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
+    }
+  };
+
+  useEffect(() => {
+
+    fetch('https://tennisapi1.p.rapidapi.com/api/tennis/player/14486/image', options)
+      .then(response => response.blob())
+      .then(response => { console.log(response); setData(response) })
+      .catch(err => console.error(err));
+
+  }, []);
 
   return (
-    <>
-      <Layout>
-
-      <div>
-        <Box
-          onSubmit={handleSubmit}
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField id="outlined-basic" label="PlayerName:" variant="outlined"
-            name="name"
-            onChange={handleChange}
-            value={formData.name}
-          >
-          </TextField>
-          <Button type="submit" variant="contained">
-            View Player
-          </Button>
-        </Box>
-      </div>
-      <div>
-        {Object.keys(tennis).length != 0 && tennis.results[0].entity.id}
-      </div>
-      </Layout>
-    </>
-  )
+    <Layout>
+    <div>
+      {data && <img src={URL.createObjectURL(data)} alt={data.alt} />}
+    </div>
+    </Layout>
+  );
 }
 
-export default Tennis
+export default Tennis;
