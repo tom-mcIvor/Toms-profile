@@ -31,7 +31,7 @@ const Tennis = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(false);
-    fetch(`tps://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
+    fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
       .then(response => response.blob())
       .then(response => {
         if (!response) {
@@ -48,7 +48,14 @@ const Tennis = () => {
 
   return (
     <Layout> 
-      <form onSubmit={handleSubmit}>
+      <Box onSubmit={handleSubmit}
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      >
         <div>
           <TextField 
             label="Search Player"
@@ -56,15 +63,14 @@ const Tennis = () => {
             value={playerId}
             onChange={(e) => setPlayerId(e.target.value)}
           />
-          {loading ? <p>error...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)}  />}
-          <br />
           <Button 
             variant="contained"
             color="primary"
             type="submit"
-          >Submit</Button>
+            >Submit</Button>
+            {loading ? <p>error...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)}  />}
         </div>
-      </form>
+      </Box>
     </Layout>
   )
 }
