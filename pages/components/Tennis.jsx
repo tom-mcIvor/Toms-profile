@@ -9,10 +9,11 @@ const Tennis = () => {
   const [data, setData] = useState(null);
   const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const options = {
     method: 'GET',
-    headers: {          
+    headers: {
       'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TENNIS_KEY,
       'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
     }
@@ -20,33 +21,52 @@ const Tennis = () => {
 
   useEffect(() => {
     fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-        .then(response => response.blob())
-        .then(response => { console.log(response); setData(response) })
-        .catch(err => console.error(err));
-    
+      .then(response => response.blob())
+      .then(response => { console.log(response); setData(response) })
+      .catch(err => console.error(err));
 
-  }, [playerId]);
+
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-        .then(response => response.blob())
-        .then(response => { console.log(response); setData(response) })
-        .catch(err => console.error(err));
-        e => setPlayerId(e.target.value)
+    setLoading(false);
+    fetch(`tps://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
+      .then(response => response.blob())
+      .then(response => {
+        if (!response) {
+          setLoading(true);
+      }
+        setData(response)
         setShowImage(true)
+      })
+      .catch(error => {
+        console.error(error);
+        setLoading(true);
+      });
   }
 
   return (
-    <Layout>
-    <div>
-    <TextField label="Search Player" variant="outlined" value={playerId} onChange={e => setPlayerId(e.target.value)} />
-      { showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} />}
-      <br />
-      <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>Submit</Button>
-    </div>
+    <Layout> 
+      <form onSubmit={handleSubmit}>
+        <div>
+          <TextField 
+            label="Search Player"
+            variant="outlined" 
+            value={playerId}
+            onChange={(e) => setPlayerId(e.target.value)}
+          />
+          {loading ? <p>error...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)}  />}
+          <br />
+          <Button 
+            variant="contained"
+            color="primary"
+            type="submit"
+          >Submit</Button>
+        </div>
+      </form>
     </Layout>
-  );
+  )
 }
 
 export default Tennis;
