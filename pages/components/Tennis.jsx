@@ -6,8 +6,8 @@ const Tennis = () => {
   const [data, setData] = useState(null);
   const options = {
     method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '6089442d10msh761447d6ab1388cp1bf39ejsn9308ea310980',
+    headers: {          
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TENNIS_KEY,
       'X-RapidAPI-Host': 'tennisapi1.p.rapidapi.com'
     }
   };
