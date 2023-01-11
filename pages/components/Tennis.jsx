@@ -11,10 +11,6 @@ const Tennis = () => {
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
   
-
-
-
-  
   const options = {
     method: 'GET',
     headers: {
@@ -28,6 +24,26 @@ const Tennis = () => {
   // .then(response => console.log(response))
   // .catch(err => console.error(err));
 
+  
+  // async function fetchTennisData() {
+  //   try {
+  //     const searchResponse = await fetch(
+  //       `https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`,
+  //       options
+  //     );
+  //     const searchData = await searchResponse.json();
+  //     const playerId = searchData.playerId;
+
+  //     const imageResponse = await fetch(
+  //       `https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`,
+  //       options
+  //     );
+  //     const imageData = await imageResponse.blob();
+  //     setData(imageData);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
 
 
   
@@ -36,8 +52,6 @@ const Tennis = () => {
       .then(response => response.blob())
       .then(response => { console.log(response); setData(response) })
       .catch(err => console.error(err));
-
-
   }, []);
 
   const handleSubmit = (e) => {
