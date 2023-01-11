@@ -11,10 +11,12 @@ const Tennis = () => {
   };
 
   useEffect(() => {
-    fetch('https://tennisapi1.p.rapidapi.com/api/img/flag/atp', options)
+
+    fetch('https://tennisapi1.p.rapidapi.com/api/tennis/player/14486/image', options)
     .then(response => response.blob())
     .then(response => {console.log(response); setData(response)})
     .catch(err => console.error(err));
+
   }, []);
 
   return (
