@@ -31,24 +31,33 @@ const Tennis = () => {
     try {
       const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
       const jsonData = await response.json();
-      if (jsonData.results.length > 0) {
-        setPlayerId(jsonData.results[0].entity.id);
-        console.log(jsonData.results[0].entity.id);
-        console.log(playerId);
-        setLoading(true);
-        const imageResponse = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
-        const imageBlob = await imageResponse.blob();
-        console.log(imageBlob);
-        setData(imageBlob);
-        console.log(data);
-        setShowImage(true);
-        setLoading(false);
-      }
+    
+     setPlayerId(jsonData.results[0].entity.id);
+     console.log(playerId);     // nothing
+    handleImageFetch()
+      
     } catch (err) {
       console.error(err)
       setLoading(true)
     }
   }
+
+  const handleImageFetch = async () => {
+    setLoading(true);
+    const imageResponse = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
+    const imageBlob = await imageResponse.blob();
+    console.log(imageBlob);
+    setData(imageBlob);
+    console.log(data);
+    setShowImage(true);
+    setLoading(false);
+  }
+
+
+  useEffect(() => {
+    console.log(playerId);
+    handleImageFetch();
+  }, [playerId])
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
