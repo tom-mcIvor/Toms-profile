@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const Tennis = () => {
   const [data, setData] = useState('');
-  const [playerId, setPlayerId] = useState('15126');
+  const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [playerName, setPlayerName] = useState('');
@@ -29,10 +29,8 @@ const Tennis = () => {
     e.preventDefault();
     setLoading(false);
     try {
-      const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
-      const jsonData = await response.json();
     
-     setPlayerId(jsonData.results[0].entity.id);
+      handleId()
      console.log(playerId);     // nothing
     handleImageFetch()
       
@@ -42,7 +40,7 @@ const Tennis = () => {
     }
   }
 
-  const handleImageFetch = async () => {
+  async function handleImageFetch () {
     setLoading(true);
     const imageResponse = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
     const imageBlob = await imageResponse.blob();
@@ -53,9 +51,19 @@ const Tennis = () => {
     setLoading(false);
   }
 
+  async function handleId () {
+    const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
+      const jsonData = await response.json();
+    await setPlayerId(jsonData.results[0].entity.id);
+    console.log(playerId);     // nothing
+
+  }
+
   useEffect(() => {
+    if(playerId){
     console.log(playerId);
     handleImageFetch();
+  }
   }, [playerId])
 
   // const handleSubmit = async (e) => {
@@ -106,7 +114,7 @@ const Tennis = () => {
           type="submit"
         >Submit</Button>
       </Box>
-      {loading ? <p>loading...</p> : showImage && data && 
+      {loading ? <p>loading...</p> : playerId && showImage && data && 
       <Image 
       src={URL.createObjectURL(data)} 
       alt={playerId + playerName} 
