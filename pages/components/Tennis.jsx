@@ -10,6 +10,7 @@ const Tennis = () => {
   const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
+  // const [playerName, setPlayerName] = useState(false);
   
   const options = {
     method: 'GET',
@@ -45,12 +46,40 @@ const Tennis = () => {
   //   }
   // }
 
+  // async function fetchTennisData() {
+  //     try {
+  //       const searchResponse = await fetch(
+  //         `https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`,
+  //         options
+  //       );
+  //       const searchData = await searchResponse.json();
+  //       const playerId = searchData.playerId;
+  
+  //       const imageResponse = await fetch(
+  //         `https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`,
+  //         options
+  //       );
+  //       const imageData = await imageResponse.blob();
+  //        if (!imageData) {
+  //       setLoading(true); 
+  //           }
+  //
+  //       setData(imageData);
+  //       setShowImage(true)
+  //     } catch (err) {
+  //       console.error(err);
+  //       setLoading(true);
+  //     }
+  //   }
 
   
   useEffect(() => {
     fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
       .then(response => response.blob())
-      .then(response => { console.log(response); setData(response) })
+      .then(response => { 
+        console.log(response); 
+        setData(response) 
+      })
       .catch(err => console.error(err));
   }, []);
 
@@ -58,7 +87,9 @@ const Tennis = () => {
     e.preventDefault();
     setLoading(false);
     fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-      .then(response => response.blob())
+      .then(response => { 
+        return (response.blob())
+        })
       .then(response => {
         if (!response) {
           setLoading(true);
@@ -88,6 +119,7 @@ const Tennis = () => {
             variant="outlined" 
             value={playerId}
             onChange={(e) => setPlayerId(e.target.value)}
+//          onChange={(e) => setPlayerName(e.target.value)}
           />
           <Button 
             variant="contained"
