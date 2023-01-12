@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const Tennis = () => {
   const [data, setData] = useState('');
-  const [playerId, setPlayerId] = useState('');
+  const [playerId, setPlayerId] = useState('15126');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [playerName, setPlayerName] = useState('');
@@ -52,7 +52,6 @@ const Tennis = () => {
     setShowImage(true);
     setLoading(false);
   }
-
 
   useEffect(() => {
     console.log(playerId);
