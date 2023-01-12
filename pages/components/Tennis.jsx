@@ -4,9 +4,10 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useDispatch, useSelector } from 'react-redux'
+import Image from 'next/image'
 
 const Tennis = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState('');
   const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,63 +21,8 @@ const Tennis = () => {
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setLoading(false);
+ 
 
-  // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
-  // .then(response => response.json())
-  // .then(response => {
-  //   setPlayerId(response.results[0].entity.id)
-  //   setLoading(false);
-  //     })
-  // .catch(err => console.error(err));
-
-  // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-  //   .then(response => { 
-  //     return (response.blob())
-  //     })
-  //   .then(response => {
-  //     if (!response) {
-  //       setLoading(true);
-  //   }
-  //     setData(response)
-  //     setShowImage(true)
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //     setLoading(true);
-  //   });
-
-  //     // e.preventDefault();
-  //     // setLoading(false);
-
-  //     // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
-  //     // .then(response => response.json())
-  //     // .then(response => {
-  //     //   setPlayerId(response.results[0].entity.id)
-  //     //   setLoading(false);
-
-  //     // return(
-
-  //     // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-  //     //   .then(response => { 
-  //     //     return (response.blob())
-  //     //     })
-  //     //   .then(response => {
-  //     //     if (!response) {
-  //     //       setLoading(true);
-  //     //   }
-  //     //     setData(response)
-  //     //     setShowImage(true)
-  //     //   })
-  //     //   .catch(error => {
-  //     //     console.error(error);
-  //     //     setLoading(true);
-  //     //   })
-  //     //   )
-  //     // })
-  // }
 
 
   const handleSubmit = async (e) => {
@@ -90,7 +36,9 @@ const Tennis = () => {
         setLoading(true);
         const imageResponse = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
         const imageBlob = await imageResponse.blob();
+        console.log(imageBlob);
         setData(imageBlob);
+        console.log(data);
         setShowImage(true);
         setLoading(false);
       }
@@ -124,7 +72,15 @@ const Tennis = () => {
           type="submit"
         >Submit</Button>
       </Box>
-      {loading ? <p>loading...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)} />}
+      {loading ? <p>loading...</p> : showImage && data && 
+      <Image 
+      src={URL.createObjectURL(data)} 
+      alt={playerId + playerName} 
+      onLoad={() => {
+      setLoading(false)}}
+      width={150}
+      height={150} />
+      }
     </Layout>
   )
 }
