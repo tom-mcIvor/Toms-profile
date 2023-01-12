@@ -10,7 +10,7 @@ const Tennis = () => {
   const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [playerName, setPlayerName] = useState(false);
+ // const [playerName, setPlayerName] = useState('');
   
   const options = {
     method: 'GET',
@@ -20,72 +20,51 @@ const Tennis = () => {
     }
   };
 
-  // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+  // fetch('https://tennisapi1.p.rapidapi.com/api/tennis/search/nadal', options)
   // .then(response => response.json())
   // .then(response => console.log(response))
   // .catch(err => console.error(err));
-
   
-  // async function fetchTennisData() {
-  //   try {
-  //     const searchResponse = await fetch(
-  //       `https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`,
-  //       options
-  //     );
-  //     const searchData = await searchResponse.json();
-  //     const playerId = searchData.playerId;
-
-  //     const imageResponse = await fetch(
-  //       `https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`,
-  //       options
-  //     );
-  //     const imageData = await imageResponse.blob();
-  //     setData(imageData);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
-
-  // async function fetchTennisData() {
-  //     try {
-  //       const searchResponse = await fetch(
-  //         `https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`,
-  //         options
-  //       );
-  //       const searchData = await searchResponse.json();
-  //       const playerId = searchData.playerId;
   
-  //       const imageResponse = await fetch(
-  //         `https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`,
-  //         options
-  //       );
-  //       const imageData = await imageResponse.blob();
-  //        if (!imageData) {
-  //       setLoading(true); 
-  //           }
-  //
-  //       setData(imageData);
-  //       setShowImage(true)
-  //     } catch (err) {
-  //       console.error(err);
-  //       setLoading(true);
-  //     }
-  //   }
+  // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+	// .then(response => response.json())
+	// .then(response => {
+  //   setPlayerId(response.results[0].entity.id)
+  //   console.log(playerId);
+  //     })
+	// .catch(err => console.error(err));
 
   
   useEffect(() => {
-    fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-      .then(response => response.blob())
-      .then(response => { 
-        console.log(response); 
-        setData(response) 
-      })
-      .catch(err => console.error(err));
+    // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
+    //   .then(response => response.blob())
+    //   .then(response => { 
+    //     console.log(response); 
+    //     setData(response) 
+    //   })
+    //   .catch(err => console.error(err));
+
+      // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+	// .then(response => response.json())
+	// .then(response => {
+  //   setPlayerId(response.results[0].entity.id)
+  //   console.log(playerId);
+  //     })
+	// .catch(err => console.error(err));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(false);
+    
+    // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+    // .then(response => response.json())
+    // .then(response => {
+    //   setPlayerId(response.results[0].entity.id)
+    //   console.log(playerId);
+    //     })
+    // .catch(err => console.error(err));
+    
     fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
       .then(response => { 
         return (response.blob())
@@ -118,15 +97,16 @@ const Tennis = () => {
             label="Search Player"
             variant="outlined" 
             value={playerId}
+            // value={playerName}
             onChange={(e) => setPlayerId(e.target.value)}
 //          onChange={(e) => setPlayerName(e.target.value)}
           />
+        </div>
           <Button 
             variant="contained"
             color="primary"
             type="submit"
             >Submit</Button>
-        </div>
       </Box>
             {loading ? <p>error...</p> : showImage && data && <img src={URL.createObjectURL(data)} alt={data.alt} onLoad={() => setLoading(false)}  />}
     </Layout>
