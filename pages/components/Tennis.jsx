@@ -33,6 +33,8 @@ const Tennis = () => {
       const jsonData = await response.json();
       if (jsonData.results.length > 0) {
         setPlayerId(jsonData.results[0].entity.id);
+        console.log(jsonData.results[0].entity.id);
+        console.log(playerId);
         setLoading(true);
         const imageResponse = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
         const imageBlob = await imageResponse.blob();
@@ -47,6 +49,30 @@ const Tennis = () => {
       setLoading(true)
     }
   }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(false);
+  //   fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+  //   .then(response => response.json())
+  //   .then(jsonData => {
+  //       if (jsonData.results.length > 0) {
+  //           setPlayerId(jsonData.results[0].entity.id);
+  //           setLoading(true);
+  //           return fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
+  //       }
+  //   })
+  //   .then(imageResponse => imageResponse.blob())
+  //   .then(imageBlob => {
+  //       setData(imageBlob);
+  //       setShowImage(true);
+  //       setLoading(false);
+  //   })
+  //   .catch(err => {
+  //       console.error(err)
+  //       setLoading(true)
+  //   });
+
 
   return (
     <Layout>
