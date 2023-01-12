@@ -10,7 +10,7 @@ const Tennis = () => {
   const [playerId, setPlayerId] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
- // const [playerName, setPlayerName] = useState('');
+  const [playerName, setPlayerName] = useState('');
   
   const options = {
     method: 'GET',
@@ -20,50 +20,17 @@ const Tennis = () => {
     }
   };
 
-  // fetch('https://tennisapi1.p.rapidapi.com/api/tennis/search/nadal', options)
-  // .then(response => response.json())
-  // .then(response => console.log(response))
-  // .catch(err => console.error(err));
-  
-  
-  // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
-	// .then(response => response.json())
-	// .then(response => {
-  //   setPlayerId(response.results[0].entity.id)
-  //   console.log(playerId);
-  //     })
-	// .catch(err => console.error(err));
-
-  
-  useEffect(() => {
-    // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
-    //   .then(response => response.blob())
-    //   .then(response => { 
-    //     console.log(response); 
-    //     setData(response) 
-    //   })
-    //   .catch(err => console.error(err));
-
-      // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
-	// .then(response => response.json())
-	// .then(response => {
-  //   setPlayerId(response.results[0].entity.id)
-  //   console.log(playerId);
-  //     })
-	// .catch(err => console.error(err));
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(false);
     
-    // fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
-    // .then(response => response.json())
-    // .then(response => {
-    //   setPlayerId(response.results[0].entity.id)
-    //   console.log(playerId);
-    //     })
-    // .catch(err => console.error(err));
+    fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
+    .then(response => response.json())
+    .then(response => {
+      setPlayerId(response.results[0].entity.id)
+      setLoading(false);
+        })
+    .catch(err => console.error(err));
     
     fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options)
       .then(response => { 
@@ -96,10 +63,10 @@ const Tennis = () => {
           <TextField 
             label="Search Player"
             variant="outlined" 
-            value={playerId}
-            // value={playerName}
-            onChange={(e) => setPlayerId(e.target.value)}
-//          onChange={(e) => setPlayerName(e.target.value)}
+            // value={playerId}
+            value={playerName}
+            // onChange={(e) => setPlayerId(e.target.value)}
+             onChange={(e) => setPlayerName(e.target.value)}
           />
         </div>
           <Button 
