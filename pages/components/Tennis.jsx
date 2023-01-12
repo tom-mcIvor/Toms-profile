@@ -29,8 +29,10 @@ const Tennis = () => {
     e.preventDefault();
     setLoading(false);
     try {
+      const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
+      const jsonData = await response.json();
     
-      handleId()
+     await setPlayerId(jsonData.results[0].entity.id);
      console.log(playerId);     // nothing
     handleImageFetch()
       
@@ -51,13 +53,11 @@ const Tennis = () => {
     setLoading(false);
   }
 
-  async function handleId () {
-    const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
-      const jsonData = await response.json();
-    await setPlayerId(jsonData.results[0].entity.id);
-    console.log(playerId);     // nothing
-
-  }
+  // async function handleId () {
+  //   const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
+  //     const jsonData = await response.json();
+  //   await setPlayerId(jsonData.results[0].entity.id);
+  // }
 
   useEffect(() => {
     if(playerId){
