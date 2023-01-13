@@ -21,28 +21,25 @@ const Tennis = () => {
     }
   };
 
- 
 
 
 
-  const handleSubmit = async (e) => {
+
+  async function handleSubmit (e) {
     e.preventDefault();
     setLoading(false);
     try {
       const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
       const jsonData = await response.json();
-    
-     await setPlayerId(jsonData.results[0].entity.id);
-     console.log(playerId);     // nothing
-    handleImageFetch()
-      
+      await setPlayerId(jsonData.results[0].entity.id);
+      console.log(playerId);     // nothing
     } catch (err) {
       console.error(err)
       setLoading(true)
     }
   }
 
-  async function handleImageFetch () {
+  async function handleImageFetch() {
     setLoading(true);
     const imageResponse = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
     const imageBlob = await imageResponse.blob();
@@ -53,19 +50,19 @@ const Tennis = () => {
     setLoading(false);
   }
 
+
+  useEffect(() => {
+    if (playerId) {
+      console.log(playerId);
+      handleImageFetch();
+    }
+  }, [playerId])
+
   // async function handleId () {
   //   const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
   //     const jsonData = await response.json();
   //   await setPlayerId(jsonData.results[0].entity.id);
   // }
-
-  useEffect(() => {
-    if(playerId){
-    console.log(playerId);
-    handleImageFetch();
-  }
-  }, [playerId])
-
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   setLoading(false);
@@ -114,14 +111,15 @@ const Tennis = () => {
           type="submit"
         >Submit</Button>
       </Box>
-      {loading ? <p>loading...</p> : playerId && showImage && data && 
-      <Image 
-      src={URL.createObjectURL(data)} 
-      alt={playerId + playerName} 
-      onLoad={() => {
-      setLoading(false)}}
-      width={150}
-      height={150} />
+      {loading ? <p>loading...</p> : playerId && showImage && data &&
+        <Image
+          src={URL.createObjectURL(data)}
+          alt={playerId + playerName}
+          onLoad={() => {
+            setLoading(false)
+          }}
+          width={150}
+          height={150} />
       }
     </Layout>
   )
