@@ -115,3 +115,33 @@ align-items: center;
 text-align: center;
 }
 
+#toms-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  }
+
+  
+  #footer {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+
+  #footer img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  #footer{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px; /* or desired height */
+      align-items: center;
+      justify-content: center;
+      display: flex;
+  }

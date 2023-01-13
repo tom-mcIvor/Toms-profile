@@ -2,6 +2,8 @@ import Link from 'next/link';
 import React from 'react';
 import DarkModeToggle from '../pages/components/DarkMode';
 import Welcome from '../pages/components/Home';
+import Footer from '../pages/components/Footer';
+
 
 
 const Layout = ({ children }) => {
@@ -32,6 +34,10 @@ const Layout = ({ children }) => {
             <div id="container">
               {children}
               </div>
+
+              <footer id='footer1'>
+                <Footer/>
+              </footer>
             </>
            
   )
