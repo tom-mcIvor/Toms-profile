@@ -12,6 +12,12 @@ const Tennis = () => {
   const [showImage, setShowImage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [playerName, setPlayerName] = useState('');
+  const [playerRank, setPlayerRank] = useState('');
+  const [playerSlug, setPlayerSlug] = useState('');
+  const [playerPrizeMoney, setPlayerPrizeMoney] = useState('');
+  const [country, setCountry] = useState('');
+
+
 
   const options = {
     method: 'GET',
@@ -21,10 +27,6 @@ const Tennis = () => {
     }
   };
 
-
-
-
-
   async function handleSubmit (e) {
     e.preventDefault();
     setLoading(false);
@@ -32,7 +34,8 @@ const Tennis = () => {
       const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
       const jsonData = await response.json();
       await setPlayerId(jsonData.results[0].entity.id);
-      console.log(playerId);     // nothing
+      await setPlayerRank(jsonData.results[0].entity.ranking);
+      await setPlayerSlug(jsonData.results[0].entity.shortName);
     } catch (err) {
       console.error(err)
       setLoading(true)
@@ -45,9 +48,16 @@ const Tennis = () => {
     const imageBlob = await imageResponse.blob();
     console.log(imageBlob);
     setData(imageBlob);
-    console.log(data);
     setShowImage(true);
     setLoading(false);
+  }
+
+  async function handlePlayerMoney() {
+  const details = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}`, options)
+  const jsonData = await details.json();
+  console.log(jsonData);
+  await setPlayerPrizeMoney(jsonData.team.playerTeamInfo.prizeTotal);
+  await setCountry(jsonData.team.country.name);
   }
 
 
@@ -55,37 +65,9 @@ const Tennis = () => {
     if (playerId) {
       console.log(playerId);
       handleImageFetch();
+      handlePlayerMoney()
     }
   }, [playerId])
-
-  // async function handleId () {
-  //   const response = await fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options);
-  //     const jsonData = await response.json();
-  //   await setPlayerId(jsonData.results[0].entity.id);
-  // }
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(false);
-  //   fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/search/${playerName}`, options)
-  //   .then(response => response.json())
-  //   .then(jsonData => {
-  //       if (jsonData.results.length > 0) {
-  //           setPlayerId(jsonData.results[0].entity.id);
-  //           setLoading(true);
-  //           return fetch(`https://tennisapi1.p.rapidapi.com/api/tennis/player/${playerId}/image`, options);
-  //       }
-  //   })
-  //   .then(imageResponse => imageResponse.blob())
-  //   .then(imageBlob => {
-  //       setData(imageBlob);
-  //       setShowImage(true);
-  //       setLoading(false);
-  //   })
-  //   .catch(err => {
-  //       console.error(err)
-  //       setLoading(true)
-  //   });
-
 
   return (
     <Layout>
@@ -121,6 +103,22 @@ const Tennis = () => {
           width={150}
           height={150} />
       }
+
+
+     {showImage && !loading &&(
+  <div className="details">
+    <pre>
+      <p>{playerSlug}</p>
+     
+      <br />
+      rank: {playerRank}
+      <br />
+      Prize money (EUR): ${playerPrizeMoney.toLocaleString()}
+      <br />
+      country: {country}
+    </pre>
+  </div>
+)}
     </Layout>
   )
 }
