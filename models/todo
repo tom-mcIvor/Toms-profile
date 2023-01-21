@@ -2,8 +2,8 @@
 
 const commands = require('./commands')
 
-const userInputs = process.argv
-const cmd = userInputs[2]
+const userInputs = process.argv[2]
+const cmd = userInputs
 
 switch (cmd) {
   case 'list':
@@ -13,3 +13,5 @@ switch (cmd) {
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
+
+console.log('hello');
