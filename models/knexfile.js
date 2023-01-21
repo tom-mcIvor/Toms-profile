@@ -1,5 +1,5 @@
 // Update with your config settings.
-
+const path = require('path')
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -9,10 +9,10 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './dev.sqlite3'
+      filename: path.join(__dirname, 'dev.sqlite3')
     }
   },
-
+  
   staging: {  
     client: 'postgresql',
     connection: {
@@ -44,5 +44,8 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
+  
 };
+
+console.log(__dirname)
+
