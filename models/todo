@@ -23,11 +23,6 @@ switch (cmd) {
     commands.updateToDo(userInputs[3], userInputs[4])
     break
 
-
-    //case: done = delete
-    //add = addtask
-    // done = update
-
   default:
     console.log("I don't understand that command:" + cmd)
 }

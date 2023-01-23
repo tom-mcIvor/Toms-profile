@@ -25,7 +25,6 @@ function logError(err) {
 }
 
 //Delete
-
 function deleteTodo(id){
   return db.deleteTask(id).then(()=>{
     console.log('Task deleted')  
@@ -35,8 +34,8 @@ function deleteTodo(id){
     db.close()
   })
 }
- //Add
 
+ //Add
 function addToDo(task){
   return db.addTask(task).then(()=>{
     console.log('Task added')  
@@ -47,6 +46,7 @@ function addToDo(task){
   })
 }
 
+ //update
 function updateToDo(id, task){
   return db.updateTask(id, task).then(()=>{
     console.log('Task added')  

@@ -9,12 +9,14 @@ const port = 3000
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
-const tennisRoutes  = require('./tennis')
 const path = require('path')
 
-server.use('/api/v1/tennis', tennisRoutes)
+const todo = require('./server/routes')
+
+server.use(express.static(path.join(__dirname, 'public')))
 server.use(express.json())
-server.use(express.static(path.join(__dirname)))
+
+server.use('/v1/todo', todo)
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
@@ -22,9 +24,7 @@ app.prepare().then(() => {
       // Be sure to pass `true` as the second argument to `url.parse`.
       // This tells it to parse the query portion of the URL.
       const parsedUrl = parse(req.url, true)
-      const { pathname, query } = parsedUrl
-      
-      
+      const { pathname, query } = parsedUrl      
       if (pathname === '/a') {
         await app.render(req, res, '/a', query)
       } else if (pathname === '/b') {
@@ -46,3 +46,5 @@ app.prepare().then(() => {
 ///api/v1/tennis/image
 
 module.exports = server
+
+
