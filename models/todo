@@ -2,16 +2,32 @@
 
 const commands = require('./commands')
 
-const userInputs = process.argv[2]
-const cmd = userInputs
+const userInputs = process.argv
+const cmd = userInputs[2]
 
 switch (cmd) {
   case 'list':
     commands.list()
     break
 
-  default:
-    console.log(`I don't understand that command: ${cmd}`)
-}
+  case 'done':
+    commands.deleteTodo(userInputs[2])    
+    break
+    
+  case 'add':
+    console.log(userInputs)
+    commands.addToDo(userInputs[3])
+    break
 
-console.log('hello');
+  case 'update':
+    commands.updateToDo(userInputs[3], userInputs[4])
+    break
+
+
+    //case: done = delete
+    //add = addtask
+    // done = update
+
+  default:
+    console.log("I don't understand that command:" + cmd)
+}
