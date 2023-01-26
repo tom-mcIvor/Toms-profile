@@ -1,14 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from 'next/link';
-import DarkModeToggle from './components/DarkMode';
 import Layout from '../components/Layout';
+import { getTodos } from './api/todoApi';
+
 
 
 function Todo() {
   // Initialize an empty list of todos
   const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const todos = await getTodos();
+      setTodos(todos);
+    };
+    fetchTodos();
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -31,23 +39,18 @@ function Todo() {
 
 
   return (
-      <Layout>
-    <div className='to-do-div'>
+    <Layout>
+      <div className='to-do-div'>
         <h1>Todo</h1>
         <div>
           <form onSubmit={handleSubmit}>
-        
-        
-        
-              <TextField type="text" name="todo" id="outlined-basic" label="Todo" variant="outlined" />
-        
-        
+            <TextField type="text" name="todo" id="outlined-basic" label="Todo" variant="outlined" />
             <Button type="submit" variant="contained" color="primary">Add</Button>
           </form>
           <ul>
             {todos.map((todo, index) => (
               <li key={index}>
-                {todo}
+                {todo.task}
                 <Button type="button" variant="contained" color="primary" onClick={() => handleDelete(index)}>
                   Delete
                 </Button>
@@ -55,9 +58,9 @@ function Todo() {
             ))}
           </ul>
         </div>
-        
-    </div>
-      </Layout>
+
+      </div>
+    </Layout>
 
 
   )
