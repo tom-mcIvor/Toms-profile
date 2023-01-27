@@ -1,5 +1,10 @@
-{"routes": 
-[{ 
-  "src": "/api/(.*)", 
-  "dest": "api/index.js" 
-}]}
+{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.js", "use": "@vercel/next" },
+    { "src": "server.js", "use": "@vercel/node" }
+  ],
+  "env": {
+    "DATABASE_URL": "./models/dev.sqlite3"
+  }
+}
