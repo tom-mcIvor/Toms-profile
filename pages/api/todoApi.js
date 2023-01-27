@@ -1,10 +1,15 @@
-import request from 'superagent';
+import request from 'superagent'
 
-const getTodos = () => {
-    return request.get('/v1/posts')
-        .then((res) => res.body)
-        .catch((error) => console.error(error));
-};
+const getTodos = (req, res) => {
+  // return request.get('/v1/posts')
+  //     .then((res) => res.body)
+  //     .catch((error) => console.error(error));
+
+  res.json({
+    'task 1': 'mow lawn',
+    'task 2': 'wash car',
+  })
+}
 
 // const addTodo = (todo) => {
 //     return request.post('/v1/posts')
@@ -26,4 +31,4 @@ const getTodos = () => {
 //         .catch((error) => console.error(error));
 // };
 
-export { getTodos /*, addTodo , updateTodo, deleteTodo */ };
+export default getTodos

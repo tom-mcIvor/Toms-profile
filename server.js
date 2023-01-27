@@ -11,8 +11,8 @@ const todo = require('./routes')
 app.prepare().then(() => {
   const server = express()
 
-  server.use('/v1/posts', todo)
-  server.use('/v1/*', (req, res) => res.sendStatus(404))
+  // server.use('/v1/posts', todo)
+  // server.use('/v1/*', (req, res) => res.sendStatus(404))
 
   server.get('*', (req, res) => {
     return handle(req, res)
