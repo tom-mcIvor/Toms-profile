@@ -3,5 +3,3 @@
   "src": "/api/(.*)", 
   "dest": "api/index.js" 
 }]}
-
-/home/thomas/Dev-Academy/next.js-round-3/models/dev.sqlite3
