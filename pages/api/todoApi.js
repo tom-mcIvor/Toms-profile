@@ -1,14 +1,19 @@
-import request from 'superagent'
+// const db = require('../../models/db')
 
 const getTodos = (req, res) => {
   // return request.get('/v1/posts')
   //     .then((res) => res.body)
   //     .catch((error) => console.error(error));
+  // db.getTodos()
+  //   .then((posts) => {
+  //     res.json(posts)
+  //   })
+  //   .catch(console.error)
 
-  res.json({
-    'task 1': 'mow lawn',
-    'task 2': 'wash car',
-  })
+  res.json([
+    {'task': 'mow lawn'},
+    {'task': 'wash car'},
+  ])
 }
 
 // const addTodo = (todo) => {

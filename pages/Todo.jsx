@@ -4,6 +4,9 @@ import TextField from '@mui/material/TextField';
 import Layout from '../components/Layout';
 import { getTodos } from './api/todoApi';
 
+// import request from 'superagent'
+
+
 
 
 function Todo() {
@@ -12,8 +15,11 @@ function Todo() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const todos = await getTodos();
-      setTodos(todos);
+      // const todos = await fetch.get('/api/todoApi')
+      const res = await fetch('/api/todoApi');
+      const json = await res.json();
+      console.log(json);
+      setTodos(json);
     };
     fetchTodos();
   }, []);
