@@ -8,11 +8,18 @@ const router = express.Router()
 // put routes here
 
 router.get('/', (req, res) => {
-  db.getTodos()
-    .then((posts) => {
-      res.json(posts)
-    })
-    .catch(console.error)
+  // db.getTodos()
+    // .then((posts) => {
+    //   res.json(posts)
+    // })
+    // .catch(console.error)
+
+    res.json(
+      {
+        "task 1" : "mow lawn",
+        "task 2" : "wash car"
+      }
+    )
 })
 
 module.exports = router
