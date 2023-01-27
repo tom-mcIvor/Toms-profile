@@ -8,7 +8,8 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
     "test": "jest --watch",
-    "knex": "knex --knexfile ./models/knexfile.js"
+    "knex": "knex --knexfile ./models/knexfile.js",
+    "postbuild": "knex migrate:latest --env production --knexfile models/knexfile.js && knex seed:run --env production --knexfile models/knexfile.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
